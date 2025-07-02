@@ -136,7 +136,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 font-sans">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 font-sans ml-4">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
         {/* Updated Heading */}
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">Dr Rajeev Kumar Garg - Dispensary Sales</h1>
@@ -271,7 +271,7 @@ function App() {
 
         {/* Today's Entries Table */}
         <div className="mt-8 pt-6 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Today's Entries</h2>
+          <h2 className="2xl font-bold text-gray-800 mb-4">Today's Entries</h2>
           {todayEntries.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-200 rounded-md">
