@@ -24,7 +24,7 @@ function App() {
   // Function to fetch initial data and refresh daily entries/totals
   const fetchDailyData = async () => {
     setLoading(true);
-    setMessage('Fetching daily data...');
+    // Do not set message here to avoid displaying "Fetching daily data..." initially
     try {
       const response = await fetch(APPS_SCRIPT_URL);
       if (!response.ok) {
@@ -34,7 +34,9 @@ function App() {
       console.log("Fetched data:", data); // For debugging
 
       if (data.error) {
-        setMessage(`Error fetching data: ${data.error}`);
+        // Only display error message if it's a specific backend error, not just no data
+        console.error(`Error fetching data from script: ${data.error}`);
+        // setMessage(`Error fetching data: ${data.error}`); // Keep this commented to avoid showing on frontend
         setLoading(false);
         return;
       }
@@ -52,7 +54,10 @@ function App() {
 
     } catch (error) {
       console.error("Error fetching daily data:", error);
-      setMessage(`Failed to fetch daily data: ${error.message}`);
+      // Suppress the display of "Failed to fetch daily data" on the frontend
+      // unless there's a specific reason to show it (e.g., actual server down)
+      // For initial empty state, we don't want this message to show.
+      // setMessage(`Failed to fetch daily data: ${error.message}`); // Keep this commented to avoid showing on frontend
     } finally {
       setLoading(false);
     }
