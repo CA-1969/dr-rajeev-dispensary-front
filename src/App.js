@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // IMPORTANT: Replace this with your actual Google Apps Script Web App URL (the /exec URL)
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsZWO9UPRheDGRP2E3oJ2aNt9UKw1m7eJ_Obp2We19kgD9CEUpyX8z8bhFMz_ZTfA/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsZWO9UPRheDGRP2E3oJ2aNt9UKw1m7eJ_Obp2We19kgD9CEUpyX8z8bhFM_ZTfA/exec';
 
 function App() {
   // State for form inputs
@@ -126,7 +126,8 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 font-sans">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">Dr Rajeev Garg - Dispensary Sales</h1>
+        {/* Updated Heading */}
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">Dr Rajeev Kumar Garg - Dispensary Sales</h1>
         {/* Copyright notice */}
         <p className="text-right text-xs text-gray-500 mb-6">© Anurag Mahshwari and Company</p>
 
