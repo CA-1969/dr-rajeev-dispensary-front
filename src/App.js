@@ -24,7 +24,6 @@ function App() {
   // Function to fetch initial data and refresh daily entries/totals
   const fetchDailyData = async () => {
     setLoading(true);
-    // Do not set message here to avoid displaying "Fetching daily data..." initially
     try {
       const response = await fetch(APPS_SCRIPT_URL);
       if (!response.ok) {
@@ -34,15 +33,14 @@ function App() {
       console.log("Fetched data:", data); // For debugging
 
       if (data.error) {
-        // Only display error message if it's a specific backend error, not just no data
         console.error(`Error fetching data from script: ${data.error}`);
-        // setMessage(`Error fetching data: ${data.error}`); // Keep this commented to avoid showing on frontend
         setLoading(false);
         return;
       }
 
       // Update form defaults based on fetched data
-      setSNo((data.lastSNo + 1).toString());
+      // If data.lastSNo is not available (first sale), default to 0 + 1 = 1
+      setSNo(((data.lastSNo || 0) + 1).toString());
       setDate(data.currentDate); // Always set current date for input
 
       // Update daily totals and entries for display
@@ -54,10 +52,19 @@ function App() {
 
     } catch (error) {
       console.error("Error fetching daily data:", error);
-      // Suppress the display of "Failed to fetch daily data" on the frontend
-      // unless there's a specific reason to show it (e.g., actual server down)
-      // For initial empty state, we don't want this message to show.
-      // setMessage(`Failed to fetch daily data: ${error.message}`); // Keep this commented to avoid showing on frontend
+      // For initial empty state, we don't want this message to show on the frontend.
+      // The error will still be logged to the console.
+      // setMessage(`Failed to fetch daily data: ${error.message}`);
+      // If it's a network error and no data, initialize S.no to 1
+      setSNo('1');
+      // Set current date if not already set by backend
+      if (!date) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0!
+        const dd = String(today.getDate()).padStart(2, '0');
+        setDate(`${yyyy}-${mm}-${dd}`);
+      }
     } finally {
       setLoading(false);
     }
