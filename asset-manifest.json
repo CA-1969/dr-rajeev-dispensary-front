@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/dr-rajeev-dispensary-front/static/js/main.41be2f44.js",
+    "main.js": "/dr-rajeev-dispensary-front/static/js/main.fc5d90b9.js",
     "index.html": "/dr-rajeev-dispensary-front/index.html",
-    "main.41be2f44.js.map": "/dr-rajeev-dispensary-front/static/js/main.41be2f44.js.map"
+    "main.fc5d90b9.js.map": "/dr-rajeev-dispensary-front/static/js/main.fc5d90b9.js.map"
   },
   "entrypoints": [
-    "static/js/main.41be2f44.js"
+    "static/js/main.fc5d90b9.js"
   ]
 }
